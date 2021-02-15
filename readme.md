@@ -15,6 +15,7 @@
 # Installation
 
 ## 1. Applications
+
 ### 1.1 [Docker](https://docs.docker.com/docker-for-windows/install/)
 Install docker desktop. This might give an error about WSL2. Follow the given instructions to fix this.
 
