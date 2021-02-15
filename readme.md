@@ -1,9 +1,8 @@
 
+
 - [Installation](#installation)
+	- [1. Applications](#1-Applications)
 		- [1.1 Docker](#11-docker)
-			- [Fix Ram Issue](#fix-ram-issue)
-					- [source](#source)
-			- [Limit max RAM usage](#limit-max-ram-usage)
 		- [1.2 Install Vcxsrv](#12-install-vcxsrv)
 		- [1.3 Install VS Code](#13-install-vs-code)
 		- [1.4 Install Git](#14-install-git)
@@ -15,6 +14,7 @@
 
 # Installation
 
+## 1. Applications
 ### 1.1 [Docker](https://docs.docker.com/docker-for-windows/install/)
 Install docker desktop. This might give an error about WSL2. Follow the given instructions to fix this.
 
