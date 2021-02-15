@@ -1,0 +1,86 @@
+ARG APPNAME=myapp
+
+FROM moveit/moveit2:foxy-source
+
+######################## Installing packages ########################
+# ROS setup
+RUN apt update && apt install curl gnupg2 lsb-release
+# RUN apt-get install -y ros-foxy-desktop
+
+# autocomplete in ROS
+RUN apt install -y python3-pip
+RUN pip3 install -U argcomplete
+
+# Update apps on the base image
+RUN apt install -y \
+  build-essential \
+  cmake \
+  git \
+  libbullet-dev \
+  python3-colcon-common-extensions \
+  python3-flake8 \
+  python3-pip \
+  python3-pytest-cov \
+  python3-rosdep \
+  python3-setuptools \
+  python3-vcstool \
+  wget
+# install some pip packages needed for testing
+RUN python3 -m pip install -U \
+  argcomplete \
+  flake8-blind-except \
+  flake8-builtins \
+  flake8-class-newline \
+  flake8-comprehensions \
+  flake8-deprecated \
+  flake8-docstrings \
+  flake8-import-order \
+  flake8-quotes \
+  pytest-repeat \
+  pytest-rerunfailures \
+  pytest
+# install Fast-RTPS dependencies
+RUN apt install --no-install-recommends -y \
+  libasio-dev \
+  libtinyxml2-dev
+# install Cyclone DDS dependencies
+RUN apt install --no-install-recommends -y \
+  libcunit1-dev
+
+# install gazebo
+RUN curl -sSL http://get.gazebosim.org | sh
+RUN apt install ros-foxy-gazebo-ros-pkgs -y
+
+######################## bashrc editing ########################
+
+# fix XDG_RUNTIME error
+RUN /bin/bash -c "mkdir /home/.XDG_RUNTIME"
+RUN /bin/bash -c "echo \"XDG_RUNTIME_DIR=/home/.XDG_RUNTIME\" >> ~/.bashrc"
+
+# initialize ros2
+RUN /bin/bash -c "echo \"source /opt/ros/foxy/setup.bash\" >> ~/.bashrc"
+RUN /bin/bash -c "source ~/.bashrc"
+
+# initialize moveit2
+RUN /bin/bash -c "echo \"source /root/ws_moveit/src/install/setup.bash\" >> ~/.bashrc"
+RUN /bin/bash -c "source ~/.bashrc"
+
+
+######################## User setup ########################
+# create devel user with password DEVEL
+RUN useradd -ms /bin/bash devel -p $(openssl passwd -1 DEVEL) -G sudo
+# change root password to DEVEL
+RUN usermod -p $(openssl passwd -1 DEVEL) root
+
+# These commands copy your files into the specified directory in the image
+# and set that as the working location
+COPY . /home/devel/myapp/
+WORKDIR /home/devel/myapp/
+
+# This command compiles your app using GCC, adjust for your source code
+# RUN g++ -o myapp src/main.cpp -Iinc/
+
+# Expose a port number
+EXPOSE 8887
+
+LABEL Name=Dockertest

@@ -1,0 +1,82 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build docker image",
+			"type": "shell",
+			"command": [
+				"docker-compose -f \".docker\\docker-compose.yml\" up -d --build"
+			],
+			"problemMatcher": [],
+			"runOptions": {
+				"reevaluateOnRerun": false
+			}
+		},
+		{
+			"label": "Open docker container",
+			"type": "shell",
+			"command": [
+				"docker exec -ti ${input:param3}",
+				"-e DISPLAY=$DISPLAY ",
+				"-e LIBGL_ALWAYS_INDIRECT=0",
+				"bash;"
+			],
+			"problemMatcher": [],
+			"runOptions": {
+				"reevaluateOnRerun": false
+			}
+		},
+		{
+			"label": "Run docker image",
+			"type": "shell",
+			"command": [
+				"export DISPLAY=host.docker.internal:0.0;",
+				"docker run -it ",
+				"-e DISPLAY=$DISPLAY ",
+				"-e LIBGL_ALWAYS_INDIRECT=0",
+				"${input:param1} bash;"
+			],
+			"problemMatcher": [],
+			"runOptions": {
+				"reevaluateOnRerun": false
+			}
+		},
+		{
+			"label": "Stop docker container",
+			"type": "shell",
+			"command": [
+				"docker stop ${input:param1};"
+			],
+			"problemMatcher": [],
+			"runOptions": {
+				"reevaluateOnRerun": false
+			}
+		},
+		{
+			"label": "Stop all running docker containers",
+			"type": "shell",
+			"command": [
+				"docker stop ${docker ps -a -q};"
+			],
+			"problemMatcher": [],
+			"runOptions": {
+				"reevaluateOnRerun": false
+			}
+		}
+	],
+	"inputs": [
+		{
+			"id": "param1",
+			"description": "ImageName:Tag",
+			"default": "dockertest:latest",
+			"type":"promptString"
+		},
+		{
+			"id": "param3",
+			"description": "ImageName:Tag",
+			"type":"promptString"
+		}
+	]
+}

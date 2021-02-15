@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  dockertest:
+    image: dockertest:latest
+    build:
+      context: ../
+      dockerfile: ./.docker/dockerfile
