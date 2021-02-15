@@ -4,15 +4,15 @@ FROM moveit/moveit2:foxy-source
 
 ######################## Installing packages ########################
 # ROS setup
-RUN apt update && apt install curl gnupg2 lsb-release
+RUN /bin/bash -c "apt update -y && apt install -y curl gnupg2 lsb-release"
 # RUN apt-get install -y ros-foxy-desktop
 
 # autocomplete in ROS
-RUN apt install -y python3-pip
-RUN pip3 install -U argcomplete
+RUN /bin/bash -c "apt install -y python3-pip"
+RUN /bin/bash -c "pip3 install -U argcomplete"
 
 # Update apps on the base image
-RUN apt install -y \
+RUN /bin/bash -c "apt install -y \
   build-essential \
   cmake \
   git \
@@ -24,9 +24,9 @@ RUN apt install -y \
   python3-rosdep \
   python3-setuptools \
   python3-vcstool \
-  wget
+  wget"
 # install some pip packages needed for testing
-RUN python3 -m pip install -U \
+RUN /bin/bash -c "python3 -m pip install -U \
   argcomplete \
   flake8-blind-except \
   flake8-builtins \
@@ -38,18 +38,18 @@ RUN python3 -m pip install -U \
   flake8-quotes \
   pytest-repeat \
   pytest-rerunfailures \
-  pytest
+  pytest"
 # install Fast-RTPS dependencies
-RUN apt install --no-install-recommends -y \
+RUN /bin/bash -c "apt install --no-install-recommends -y \
   libasio-dev \
-  libtinyxml2-dev
+  libtinyxml2-dev"
 # install Cyclone DDS dependencies
-RUN apt install --no-install-recommends -y \
-  libcunit1-dev
+RUN /bin/bash -c "apt install --no-install-recommends -y \
+  libcunit1-dev"
 
 # install gazebo
-RUN curl -sSL http://get.gazebosim.org | sh
-RUN apt install ros-foxy-gazebo-ros-pkgs -y
+RUN /bin/bash -c "curl -sSL http://get.gazebosim.org | sh"
+RUN /bin/bash -c "apt install ros-foxy-gazebo-ros-pkgs -y"
 
 ######################## bashrc editing ########################
 
@@ -68,9 +68,9 @@ RUN /bin/bash -c "source ~/.bashrc"
 
 ######################## User setup ########################
 # create devel user with password DEVEL
-RUN useradd -ms /bin/bash devel -p $(openssl passwd -1 DEVEL) -G sudo
+RUN /bin/bash -c "useradd -ms /bin/bash devel -p $(openssl passwd -1 DEVEL) -G sudo"
 # change root password to DEVEL
-RUN usermod -p $(openssl passwd -1 DEVEL) root
+RUN /bin/bash -c "usermod -p $(openssl passwd -1 DEVEL) root"
 
 # These commands copy your files into the specified directory in the image
 # and set that as the working location
