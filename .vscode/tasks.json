@@ -58,7 +58,7 @@
 			"label": "Stop all running docker containers",
 			"type": "shell",
 			"command": [
-				"docker stop ${docker ps -a -q};"
+				"docker stop $(docker ps -q);"
 			],
 			"problemMatcher": [],
 			"runOptions": {
