@@ -1,6 +1,6 @@
 {
 	"files.exclude": {
-		"**/.docker": true,
+		//"**/.docker": true,
 		".dockerignore": true,
 		"*.xlaunch": true
 	}
