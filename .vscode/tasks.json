@@ -44,6 +44,21 @@
 			}
 		},
 		{
+			"label": "Run docker image clean",
+			"type": "shell",
+			"command": [
+				"export DISPLAY=host.docker.internal:0.0;",
+				"docker run -it --rm",
+				"-e DISPLAY=$DISPLAY ",
+				"-e LIBGL_ALWAYS_INDIRECT=0",
+				"${input:param1} bash;"
+			],
+			"problemMatcher": [],
+			"runOptions": {
+				"reevaluateOnRerun": false
+			}
+		},
+		{
 			"label": "Stop docker container",
 			"type": "shell",
 			"command": [

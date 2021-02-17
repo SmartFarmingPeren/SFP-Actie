@@ -78,12 +78,13 @@ Clone the github repository to a folder:
 
 Open the folder in VS code. You can use `Ctrl + p` to open the command palette. Type `>Run Task` an option `Tasks: Run Task` should show up. Select it and press Enter.
 
-5 tasks show up:
+6 tasks show up:
 * `Build docker image`
 * `Open docker container`
 * `Run docker image`
 * `Stop docker container`
 * `Stop all running docker containers`
+* `Run docker image clean`
 
 The most used tasks will be:
 * `Build docker image`
@@ -118,6 +119,7 @@ Task Name | Task Description | Arguments
 ----------|----------------- | ----------
 Build docker image | Builds the docker image, Can be used to run containers | None
 Open docker container | Opens a running docker container. | Name:Tag of running container
-Run docker image | Creates a docker container from pre-build docker image and enters it. | Name:Tag of docker image
+Run docker image | Creates a docker container from pre-build docker image and enters it. Re-opens latest container if it exits | Name:Tag of docker image
 Stop docker container | Stops a running docker container. | Name:Tag of running container
 Stop all running docker containers | Stops all running docker containers | None
+Run docker image clean | removes the docker container after being run | Name:Tag of docker image
