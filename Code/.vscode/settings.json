@@ -3,5 +3,6 @@
 		//"**/.docker": true,
 		".dockerignore": true,
 		"*.xlaunch": true
-	}
+	},
+	"cmake.configureOnOpen": false
 }
