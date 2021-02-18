@@ -9,7 +9,7 @@ sudo apt update
 sudo apt install ros-foxy-desktop
 
 echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+. ~/.bashrc
 
 sudo apt install -y python3-pip
 pip3 install -U argcomplete
@@ -66,9 +66,9 @@ wget https://raw.githubusercontent.com/ros-planning/moveit2/main/moveit2.repos
 vcs import < moveit2.repos
 rosdep install -r --from-paths . --ignore-src --rosdistro foxy -y
 
-source ~/.bashrc
+. ~/.bashrc
 cd $COLCON_WS
 colcon build --event-handlers desktop_notification- status- --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 echo "source $COLCON_WS/install/setup.bash" >> ~/.bashrc
-source ~/.bashrc
+. ~/.bashrc

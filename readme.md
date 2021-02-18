@@ -13,13 +13,21 @@
 - [Task description](#task-description)
 
 # Installation
+## Ubuntu
 
-## 1. Applications
+Clone the github repository.
+Execute `chmod +x install.sh` in the newly cloned directory.
+Run `./install.sh` to install ROS2 and MoveIt2.
 
-### 1.1 [Docker](https://docs.docker.com/docker-for-windows/install/)
+Recommended to close any running applications before hand and keep a running instance of `htop` open. This is to ensure your PC doesn't crash. The installation can take a while, especially the part when COLCON builds the MoveIt2 packages.
+
+## Windows
+### 1. Applications
+
+#### 1.1 [Docker](https://docs.docker.com/docker-for-windows/install/)
 Install docker desktop. This might give an error about WSL2. Follow the given instructions to fix this.
 
-#### Fix [Ram Issue](https://github.com/microsoft/WSL/issues/4166)
+##### Fix [Ram Issue](https://github.com/microsoft/WSL/issues/4166)
 Open the WSL shell
 Run `sudo crontab -e -u root`, add the following to `drop_cache` automatically every 15 min:
 ```
@@ -44,7 +52,7 @@ sudo stat -c '%y' /root/drop_caches_last_run
 ```
 ###### [source](https://github.com/Adriankhl/wsl2-xwin-audio)
 
-#### Limit max RAM usage
+##### Limit max RAM usage
 Go to `C:\users\**YourUsername**` and create a `.wslconfig` file.
 Add the following to the file. Customize max memory usage for your setup
 ```
@@ -54,11 +62,11 @@ swap=0
 localhostForwarding=true
 ```
 
-### 1.2 Install [Vcxsrv](https://sourceforge.net/projects/vcxsrv/) 
+#### 1.2 Install [Vcxsrv](https://sourceforge.net/projects/vcxsrv/) 
 
 Follow the installation instructions. __Do not start an instance of Vcxsrv.__
 
-### 1.3 Install [VS Code](https://code.visualstudio.com/)
+#### 1.3 Install [VS Code](https://code.visualstudio.com/)
 Install VS Code, follow the instructions.
 Launch VS Code and install the following extensions:
 
@@ -69,10 +77,10 @@ Launch VS Code and install the following extensions:
 
 You can install other extensions for themes and code support as you like. These are required for a minimal working setup.
 
-### 1.4 Install [Git](https://git-scm.com/)
+#### 1.4 Install [Git](https://git-scm.com/)
 Install Git. You can choose to use VS Code as your default editor. I would recommend the default settings.
 
-## 2. Building
+### 2. Building
 Clone the github repository to a folder:
 > git clone https://github.com/SmartFarmingPeren/SFP-Actie.git
 
@@ -94,18 +102,18 @@ For now build the docker image using the `Build docker image` task. For a full d
 
 The first time build of a docker image will take a long time. This is caused by size of the MoveIt2 source package. The resulting docker image will be approximately 12GB. You can view all local docker images in the docker desktop application.
 
-## 4. Running
+### 4. Running
 
 To use the docker image use the `Run docker image` task.
 This will open a CLI in vscode which is connected to the docker container. The docker image is based on Ubuntu 20. If you want to open the docker container in VS Code you can use the command palette and the Docker explorer extension.
 
 Open the command palette with `Ctrl + p` Type: `>Remote-Container` and press Enter. Keep in mind that you need a running docker container to attach to.
 
-## 5. Testing
+### 5. Testing
 
 When you are inside the docker container. Either through VS Code or through CLI you can run the build application and test it as if running it through the Ubuntu OS.
 
-## 6. GUI support
+### 6. GUI support
 
 If need be for a GUI or other graphical application run from the docker container simply open the `config.xlaunch`. This will open a Vcxsrv instance, or Xserver. You can close the Xserver from the system tray.
 
