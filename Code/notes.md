@@ -1,29 +1,41 @@
-### Create a new package for ROS:
+## create catkin workspace:
 
-> ros2 pkg create *my_package* --build-type ament_cmake --dependencies rclcpp
+` mkdir -p *projectname*/src`
 
-Creates a folder called *my_package* in current directory
+Install package dependencies not already in your workspace:
 
-rclcpp is the ros-core-library for C++, this is a standard dependency 
+`rosdep install -y --from-paths . --ignore-src --rosdistro melodic`
 
-Add a launch folder into the new ros2 package.
-Add a launch file called **name**.launch.py to keep convention.
+Configure catking workspace:
 
-### Compile newly created ROS package
+```sh
+cd *projectname*
+catkin config --extend /opt/ros/melodic --cmake-args -DCMAKE_BUILD_TYPE=Release
+catkin build
+```
 
-Run from main project directory:
-> colcon build --symlink-install --packages-select *my_package*
+Source the catkin workspace[2]:
 
-After building the package source `install/setup.bash`
+```sh
+source *projectname*/devel/setup.bash
+```
 
-### Launch simulation
+to launch the project:
 
-> ros2 launch *my_package* **name**.launch.py
+```sh
+roslaunch *projectname* *launchfile*.launch
+```
 
-Where **name** is the name of the launch file previously made in the launch folder
+example: `roslaunch ur10e_moveit_config demo.launch` roslaunch contains autocomplete for loaded catkin workspaces.[5]
+Only 1 catkin workspace can be sourced at a time.[7]
 
 
-### gazebo trouble
+## Sources:
 
-If the gazebo crashes or you see a log with `"[gazebo-] process has dies [pid , exit code **255**],`
-then you might want to try to `source /usr/share/gazebo/setup.sh` and use `killall gzserver`, `killall gzclient`
+1. [ROS melodic Installation](http://wiki.ros.org/melodic/Installation/Ubuntu)
+2. [Moveit Installation](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/getting_started/getting_started.html)
+3. [ROS-industrial Installation](http://wiki.ros.org/Industrial/Install)
+4. [Universal Robot for ROS-industrial](https://github.com/ros-industrial/universal_robot)
+5. [MoveIt setup_assistant tutorial](https://www.youtube.com/watch?v=9aK0UDBKWT8)
+6. [Convert xarco file to urdf](https://answers.ros.org/question/10401/how-to-convert-xacro-file-to-urdf-file/)
+7. [Several catkin workspaces](https://answers.ros.org/question/175234/several-catkin-workspaces/)
