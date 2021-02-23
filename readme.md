@@ -13,12 +13,15 @@
 - [Task description](#task-description)
 
 # Installation
-## Ubuntu
+## Ubuntu 18.04
 
 Clone the github repository.
-Execute `chmod +x install.sh` in the newly cloned directory.
-Run `./install.sh` to install ROS2 and MoveIt2.
+Execute `chmod +x install-melodic.sh` in the newly cloned directory.
+Run `./install-melodic.sh` to install ROS and MoveIt and ROS-industrial.
 
+## Ubuntu 20.04
+If ROS-industrial is not desired. You can execute: `chmod +x install-foxy.sh` in the newly cloned directory.
+Afterwhich run `./install-foxy.sh` to install ROS2 and MoveIt2.
 Recommended to close any running applications before hand and keep a running instance of `htop` open. This is to ensure your PC doesn't crash. The installation can take a while, especially the part when COLCON builds the MoveIt2 packages.
 
 ## Windows
