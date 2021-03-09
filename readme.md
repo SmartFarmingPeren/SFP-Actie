@@ -8,12 +8,12 @@ Clone the github repository.
 Execute `chmod +x install-melodic.sh` in the newly cloned directory.
 Run `./install-melodic.sh` to install ROS and MoveIt and ROS-industrial.
 
-# Tips for runnin Ubuntu in Virtual Machine.
+# Tips for running Ubuntu in Virtual Machine.
 
 1. Have the 6.1 Oracle VM VirtualBox extension pack downloaded on your host and on your Virtal Machine. You can download the extension pack [here](https://www.virtualbox.org/wiki/Downloads).
 2. When running a Virtual machine have at least 4gb base Memory and 3 or more processors assigned.
 
-### How to instal the extension pack on your vm machine:
+### How to install the extension pack on your vm machine:
 ---
 Start the virtual machine, open an terminal and run:
 ```
