@@ -1,0 +1,13 @@
+catkin:
+
+http://wiki.ros.org/catkin/Tutorials/CreatingPackage
+http://wiki.ros.org/catkin/Tutorials/using_a_workspace
+http://wiki.ros.org/catkin/Tutorials/create_a_workspace
+
+catkin build == catkin_make
+catkin init == catkin_init_workspace
+
+
+Bestanden in src worden nooit veranderd, opnieuw installeren doen door alle mapjes weg tehalen en de CMakeList.txt ook. Daarna kan met catkin_make weer opnieuw gebuild worden. Vervolgens ook de init workspace weer uitvoeren. 
+
+

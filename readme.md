@@ -1,6 +1,9 @@
 # Why ROS-Melodic?
 ROS-industrial has binary support up to ROS-melodic. ROS-industrial can support noetic when build from source, but this would lead to a less reliable code base. Another reason not to use ROS-noetic is because this is not supported by the Universal robot package that is used by MoveIt. ROS-noetic needs to run on Ubuntu 18.04 because newer ubuntu versions aren't supported by the MoveIt-noetic package.
 
+
+
+
 # Installation
 
 ## Installing Ubuntu 18.04 as a VM on Virtual Box 
@@ -17,7 +20,14 @@ ROS-industrial has binary support up to ROS-melodic. ROS-industrial can support 
 7. Start the Machine (if you get a network adapter error while starting the VM, select `Change Network Settings` and choose `NAT` from the first drop-down list and click `Okay`
 8. Once the VM has started up, login username: "Ubuntu", password: "ubuntu"
 
-### Installing ROS and MoveIt in Ubuntu 18.04
+
+### New installation of ROS and MoveIt in Ubuntu 18.04
+
+There where problems with the old install-melodic.sh so it is recommended to do the installation by hand. This means following the steps described in install.txt. More information about ROS and MoveIt can be found in ros.txt and catkin.txt.
+
+
+
+### OLD Installing ROS and MoveIt in Ubuntu 18.04
 1. Install git on your machine if you haven't done so already. (you can use [this](https://gist.github.com/derhuerst/1b15ff4652a867391f03#installing-git-on-linux) guide if you are stuck).
 2. Clone the `SFP-Actie` to your machine.
 3. Open the terminal, navigate to the newly created folder and execute `chmod +x install-melodic.sh`.

@@ -1,0 +1,20 @@
+sources:
+http://wiki.ros.org/melodic/Installation/Ubuntu
+https://moveit.ros.org/install/
+http://wiki.ros.org/Industrial/Install
+
+
+
+Learning:
+https://industrial-training-master.readthedocs.io/en/melodic/index.html ###ROS industrial###
+http://docs.ros.org/en/melodic/api/moveit_tutorials/html/index.html ###Moveit!###
+https://www.ros.org/reps/rep-0128.html ###catkin layout###
+http://wiki.ros.org/catkin/workspaces
+
+
+
+
+RUNNING:
+roslaunch ur_e_gazebo ur10e.launch limited:=true
+roslaunch ur10_e_moveit_config ur10_e_moveit_planning_execution.launch sim:=true limited:=true
+roslaunch ur10_e_moveit_config moveit_rviz.launch config:=true
