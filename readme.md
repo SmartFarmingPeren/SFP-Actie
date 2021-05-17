@@ -10,6 +10,7 @@ The installation can be done by hand or can be skipped by using the VM that is a
 
 If you choose to do so by hand follow the installation down below. If you choose to go for the VM all you need to do is: 
 1. Update the git repo
+2. `chmod +x /home/Ubuntu/SFP-Actie/start_program.sh
 
 ## Installing Ubuntu 18.04 as a VM on Virtual Box 
 (A host machine with at least 8GB or RAM and 8 CPU cores is recommended)
