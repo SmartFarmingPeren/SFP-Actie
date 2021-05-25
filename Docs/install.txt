@@ -47,24 +47,19 @@ sudo apt install ros-melodic-ros-canopen
 #CATKIN SETUP                                                                                        #
 ######################################################################################################
 
-mkdir --parents catkin_ws/src
+git clone https://github.com/SmartFarmingPeren/SFP-Actie.git
 
-cd catkin_ws
+cd SFP-Actie
+
+git checkout Development
+
+chmod +x /home/ubuntu/SFP-Actie/start_program.sh
+
+cd /home/ubuntu/SFP-Actie/catkin_ws
 
 catkin_make
 
-catkin_init_workspace
-
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+echo "source ~/SFP-Actie/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 source ~/.bashrc
-
-cd src
-
-git clone -b melodic-devel https://github.com/ros-industrial/universal_robot.git
-
-cd ..
-
-rosdep install --rosdistro melodic --ignore-src --from-paths src
-
 
